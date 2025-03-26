@@ -410,6 +410,27 @@
       function copyToClipBoard(){
         navigator.clipboard.writeText(resultQuery)
       }
+
+      async function handleAiQuery(context){
+        try {
+          const response= await fetch('http://localhost:5000/generate_ai_query',{
+            method:"POST",
+            headers:{
+              "Content-Type":"application/json"
+            },
+            body:JSON.stringify({prompt:document.getElementById("prompt").value})
+          })
+          const data=await response.json();
+          // if(data.status==200){
+          //   console.log(response)
+          //   console.log(response.data)
+          // }
+          console.log(data)
+        } catch (error) {
+          console.error("Request failed:", error);
+          alert("Failed to generate query. Please try again.");
+        }
+      }
     </script>
   </head>
 
@@ -641,7 +662,9 @@
         <div class="ai-suggestions">
           <h2>AI Suggestions</h2>
           <p>Let AI analyze and suggest best dorks based on your target.</p>
-          <button class="ai-btn">Generate AI Query</button>
+
+          <input type="text" style="width: 95%;" placeholder="Enter a prompt here" id="prompt"/>
+          <button class="ai-btn" onclick="handleAiQuery(this)">Generate AI Query</button>
         </div>
         <div class="query-history">
           <h2>Query History</h2>
