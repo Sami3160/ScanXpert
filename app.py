@@ -66,6 +66,9 @@ def generate_ai_query():
     data = request.get_json()
     # if not isinstance(data, dict):
     #     return jsonify({"error": "Invalid input format"}), 400
+    if(len(data.get("prompt",""))==0):
+        return jsonify({"error": "Invalid input format"}), 400
+    
     
     query = generate_ai_powered_dork(data)
     print(query.split(" $ "))

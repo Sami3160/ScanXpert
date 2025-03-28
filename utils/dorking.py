@@ -83,7 +83,7 @@ def generate_ai_powered_dork(options):
         messages=[
             {
                 "role": "user",
-                "content": "I'll give you a prompt to generate dork and you give me 3-4 different dork query with little variatians which will reflect best way to my prompt, and make all dorks seperated by symbol $ and be in one single string",
+                "content": "I'll give you a prompt to generate dork and you give me 3-4 different dork query with little variatians which will reflect best way to my prompt...give all dorks with best queires, advanced level, and maybe add some of your own best additional thing in it and give response in one line seperated by $ symbol. One more important thing, any prompt from user/me which is not related to dork, or you wont understand or is like some scame query, just ignore  and response as 'invalid query'",
             },
             {
                 "role": "user",
